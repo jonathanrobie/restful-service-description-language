@@ -13,6 +13,7 @@
         approach to REST design, requiring that a service have a single entry point, and focusing
         the design on resources, links, and media types.</para>
     </abstract>
+
     <author>
       <personname>
         <firstname>Jonathan</firstname>
@@ -81,9 +82,14 @@
       </affiliation>
       <email>erik.wilde@emc.com</email>
     </author>
-    <keywordset role="author">
-      <keyword/>
-    </keywordset>
+    
+    <copyright>
+      <year>2013</year>
+      <holder>EMC Corporation.  
+      Except where otherwise noted, this content is licensed under a Creative Commons Attribution 3.0 License.  Schemas and stylesheets in this document are licensed under an Apache 2.0 License.</holder>
+    </copyright>
+       
+
   </info>
   <section>
     <title>Introduction</title>

@@ -1,9 +1,10 @@
 <html><head>
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-   <title>RESTful Service Description Language (RSDL)</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><meta name="description" content="RESTful Service Description Language (RSDL) is an XML vocabulary for designing and documenting hypermedia-driven RESTful Services. RSDL takes a purist hypermedia-driven approach to REST design, requiring that a service have a single entry point, and focusing the design on resources, links, and media types."><meta name="keywords" content=""></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article"><div class="titlepage"><div><div><h2 class="title"><a name="HR-23632987-8973"></a>RESTful Service Description Language (RSDL)</h2></div><div><h3 class="subtitle"><i>Describing RESTful Services Without Tight Coupling</i></h3></div><div><div class="author"><h3 class="author"><span class="firstname">Jonathan</span> <span class="surname">Robie</span></h3><div class="affiliation"><span class="orgname">EMC Corporation<br></span></div><code class="email">&lt;<a class="email" href="mailto:jonathan.robie@emc.com">jonathan.robie@emc.com</a>&gt;</code></div></div><div><div class="author"><h3 class="author"><span class="firstname">Rob</span> <span class="surname">Cavicchio</span></h3><div class="affiliation"><span class="orgname">EMC Corporation<br></span></div><code class="email">&lt;<a class="email" href="mailto:rob.cavicchio@emc.com">rob.cavicchio@emc.com</a>&gt;</code></div></div><div><div class="author"><h3 class="author"><span class="firstname">R&eacute;mon</span> <span class="surname">Sinnema</span></h3><div class="affiliation"><span class="orgname">EMC Corporation<br></span></div><code class="email">&lt;<a class="email" href="mailto:remon.sinnema@emc.com">remon.sinnema@emc.com</a>&gt;</code></div></div><div><div class="author"><h3 class="author"><span class="firstname">Erik</span> <span class="surname">Wilde</span></h3><div class="affiliation"><span class="orgname">EMC Corporation<br></span></div><code class="email">&lt;<a class="email" href="mailto:erik.wilde@emc.com">erik.wilde@emc.com</a>&gt;</code></div></div><div><div class="abstract"><p class="title"><b>Abstract</b></p><p>RESTful Service Description Language (RSDL) is an XML vocabulary for designing and
+   <title>RESTful Service Description Language (RSDL)</title><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><meta name="description" content="RESTful Service Description Language (RSDL) is an XML vocabulary for designing and documenting hypermedia-driven RESTful Services. RSDL takes a purist hypermedia-driven approach to REST design, requiring that a service have a single entry point, and focusing the design on resources, links, and media types."></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article"><div class="titlepage"><div><div><h2 class="title"><a name="HR-23632987-8973"></a>RESTful Service Description Language (RSDL)</h2></div><div><h3 class="subtitle"><i>Describing RESTful Services Without Tight Coupling</i></h3></div><div><div class="author"><h3 class="author"><span class="firstname">Jonathan</span> <span class="surname">Robie</span></h3><div class="affiliation"><span class="orgname">EMC Corporation<br></span></div><code class="email">&lt;<a class="email" href="mailto:jonathan.robie@emc.com">jonathan.robie@emc.com</a>&gt;</code></div></div><div><div class="author"><h3 class="author"><span class="firstname">Rob</span> <span class="surname">Cavicchio</span></h3><div class="affiliation"><span class="orgname">EMC Corporation<br></span></div><code class="email">&lt;<a class="email" href="mailto:rob.cavicchio@emc.com">rob.cavicchio@emc.com</a>&gt;</code></div></div><div><div class="author"><h3 class="author"><span class="firstname">R&eacute;mon</span> <span class="surname">Sinnema</span></h3><div class="affiliation"><span class="orgname">EMC Corporation<br></span></div><code class="email">&lt;<a class="email" href="mailto:remon.sinnema@emc.com">remon.sinnema@emc.com</a>&gt;</code></div></div><div><div class="author"><h3 class="author"><span class="firstname">Erik</span> <span class="surname">Wilde</span></h3><div class="affiliation"><span class="orgname">EMC Corporation<br></span></div><code class="email">&lt;<a class="email" href="mailto:erik.wilde@emc.com">erik.wilde@emc.com</a>&gt;</code></div></div><div><p class="copyright">Copyright &copy; 2013 EMC Corporation.  
+      Except where otherwise noted, this content is licensed under a Creative Commons Attribution 3.0 License.  Schemas and stylesheets in this document are licensed under an Apache 2.0 License.</p></div><div><div class="abstract"><p class="title"><b>Abstract</b></p><p>RESTful Service Description Language (RSDL) is an XML vocabulary for designing and
         documenting hypermedia-driven RESTful Services. RSDL takes a purist hypermedia-driven
         approach to REST design, requiring that a service have a single entry point, and focusing
-        the design on resources, links, and media types.</p></div></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="#d5e45">Introduction</a></span></dt><dt><span class="section"><a href="#d5e52">What should a RESTful service description describe?</a></span></dt><dt><span class="section"><a href="#d5e89">A Sample RSDL Description</a></span></dt><dt><span class="section"><a href="#d5e98">The Structure of a RSDL Description</a></span></dt><dd><dl><dt><span class="section"><a href="#d5e101">Service</a></span></dt><dt><span class="section"><a href="#d5e119">Media Types</a></span></dt><dt><span class="section"><a href="#d5e151">Resources</a></span></dt><dt><span class="section"><a href="#d5e214">Link Relations</a></span></dt><dt><span class="section"><a href="#d5e219">Headers</a></span></dt><dt><span class="section"><a href="#d5e223">Authentication</a></span></dt><dt><span class="section"><a href="#d5e229">Status Codes</a></span></dt><dt><span class="section"><a href="#d5e235">URI Parameters</a></span></dt><dt><span class="section"><a href="#d5e241">Documentation Modules</a></span></dt></dl></dd><dt><span class="section"><a href="#d5e261">Initial Experience</a></span></dt><dt><span class="section"><a href="#d5e269">Future Work</a></span></dt><dt><span class="section"><a href="#d5e276">Conclusions</a></span></dt><dt><span class="appendix"><a href="#appx-rsdl.rnc">A. RSDL Schema</a></span></dt><dt><span class="appendix"><a href="#appx-html-subset">B. HTML module for RSDL Documentation</a></span></dt><dt><span class="appendix"><a href="#appx-docbook-subset">C. DocBook module for RSDL Documentation</a></span></dt><dt><span class="appendix"><a href="#appx-xslt-stylesheet">D. An XSLT Stylesheet for RSDL</a></span></dt><dt><span class="appendix"><a href="#appx-planets.rsdl">E. RSDL Description for the Planets Service</a></span></dt><dt><span class="bibliography"><a href="#d5e300">Bibliography</a></span></dt></dl></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e45"></a>Introduction</h2></div></div></div><p>RESTful Service Description Language (RSDL) is an XML vocabulary for designing and
+        the design on resources, links, and media types.</p></div></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="#d5e46">Introduction</a></span></dt><dt><span class="section"><a href="#d5e53">What should a RESTful service description describe?</a></span></dt><dt><span class="section"><a href="#d5e90">A Sample RSDL Description</a></span></dt><dt><span class="section"><a href="#d5e99">The Structure of a RSDL Description</a></span></dt><dd><dl><dt><span class="section"><a href="#d5e102">Service</a></span></dt><dt><span class="section"><a href="#d5e120">Media Types</a></span></dt><dt><span class="section"><a href="#d5e152">Resources</a></span></dt><dt><span class="section"><a href="#d5e215">Link Relations</a></span></dt><dt><span class="section"><a href="#d5e220">Headers</a></span></dt><dt><span class="section"><a href="#d5e224">Authentication</a></span></dt><dt><span class="section"><a href="#d5e230">Status Codes</a></span></dt><dt><span class="section"><a href="#d5e236">URI Parameters</a></span></dt><dt><span class="section"><a href="#d5e242">Documentation Modules</a></span></dt></dl></dd><dt><span class="section"><a href="#d5e262">Initial Experience</a></span></dt><dt><span class="section"><a href="#d5e270">Future Work</a></span></dt><dt><span class="section"><a href="#d5e277">Conclusions</a></span></dt><dt><span class="appendix"><a href="#appx-rsdl.rnc">A. RSDL Schema</a></span></dt><dt><span class="appendix"><a href="#appx-html-subset">B. HTML module for RSDL Documentation</a></span></dt><dt><span class="appendix"><a href="#appx-docbook-subset">C. DocBook module for RSDL Documentation</a></span></dt><dt><span class="appendix"><a href="#appx-xslt-stylesheet">D. An XSLT Stylesheet for RSDL</a></span></dt><dt><span class="appendix"><a href="#appx-planets.rsdl">E. RSDL Description for the Planets Service</a></span></dt><dt><span class="bibliography"><a href="#d5e301">Bibliography</a></span></dt></dl></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e46"></a>Introduction</h2></div></div></div><p>RESTful Service Description Language (RSDL) is an XML vocabulary for designing and
       documenting hypermedia-driven RESTful Services. RSDL takes a purist hypermedia-driven approach
       to REST design, requiring that a service have a single entry point, and focusing the design on
       resources, links, and media types. By representing the concepts of REST in a formal
@@ -27,7 +28,7 @@
       should be represented, where to document semantics specific to the application domain, or how
       to organize all of the information that belongs in a specification. </p><p>This paper presents RESTful Service Description Language (RSDL, pronounced "risdle"), an
       XML vocabulary that provides a structured way to specify a RESTful service. RSDL is still
-      being developed.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e52"></a>What should a RESTful service description describe?</h2></div></div></div><p>The description for a RESTful service should describe semantics specific to the service
+      being developed.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e53"></a>What should a RESTful service description describe?</h2></div></div></div><p>The description for a RESTful service should describe semantics specific to the service
       that go beyond functionality known to a generic REST client. In RSDL, every RESTful service
       has a single entry point, which corresponds to a home resource, and all other resources can be
       discovered from the home resource using links. The structure of a RSDL description enforces
@@ -75,7 +76,7 @@
       implementation code, guiding the process of design, visualizing and evaluating service designs
       created by others, generating various forms of human and machine-readable documentation,
       providing data for testing clients, and generating stubs for server-side code. The structure
-      of RSDL's schema can guide the design process, nudging designs to be more RESTful<a href="#ftn.d5e78" class="footnote" name="d5e78"><sup class="footnote">[1]</sup></a>.</p><p>A RESTful service typically needs to document additional information beyond normal HTTP
+      of RSDL's schema can guide the design process, nudging designs to be more RESTful<a href="#ftn.d5e79" class="footnote" name="d5e79"><sup class="footnote">[1]</sup></a>.</p><p>A RESTful service typically needs to document additional information beyond normal HTTP
       semantics. RSDL allows the following to be documented either in schemas or documentation
       associated with a mediatype, or in documentation elements, which allow documentation to be
       written in HTML, DocBook, or other formats, and can be placed throughout a RSDL description.
@@ -111,7 +112,7 @@
       documented globally for the service. Like WADL, RSDL allows schemas that describe expected
       formats for representations, but RSDL also allows descriptions in other formats, including W3C
       XML Schemas, Relax-NG, JSON Schema, HTML descriptions, text-based descriptions, or anything
-      else that can be referred to with a URI. </p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e89"></a>A Sample RSDL Description</h2></div></div></div><p>The following RSDL example describes a simple service that supports a collection of
+      else that can be referred to with a URI. </p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e90"></a>A Sample RSDL Description</h2></div></div></div><p>The following RSDL example describes a simple service that supports a collection of
       documents. The service uses several media types: an XML Home document as the entry point, an
       atom feed to represent the collection of documents, an HTML description that describes the
       service, and a media type for the documents used in the service. The schema for RSDL is
@@ -292,8 +293,8 @@
   &lt;/status-codes&gt;
 &lt;/service&gt;
 
-    </pre><p>This example will be examined in more detail in the following section.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e98"></a>The Structure of a RSDL Description</h2></div></div></div><p>In this section, we will explore the structure of a RSDL description, using the example
-      from the previous section. </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e101"></a>Service</h3></div></div></div><p>The top-level element for a RSDL description is the service element. Here is the
+    </pre><p>This example will be examined in more detail in the following section.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e99"></a>The Structure of a RSDL Description</h2></div></div></div><p>In this section, we will explore the structure of a RSDL description, using the example
+      from the previous section. </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e102"></a>Service</h3></div></div></div><p>The top-level element for a RSDL description is the service element. Here is the
         structure of the service element, in Relax-NG Compact syntax, together with the optional
         attribute used to designate an identity provider for authentication, and a start element
         that identifies the home resource.</p><pre class="programlisting">
@@ -334,7 +335,7 @@ identity-provider-ref = attribute identity-provider-ref { xsd:IDREF }
  &lt;/service&gt;
         </pre><p>The <code class="code">name</code> of a service is provided primarily for human beings who need to
         refer to the service. REST clients do not use a name to identify a service, they enter a
-        service using the URI of the home resource.<a href="#ftn.d5e109" class="footnote" name="d5e109"><sup class="footnote">[2]</sup></a></p><p>The <code class="code">identity-provider-ref</code> attribute refers to an identity provider that can
+        service using the URI of the home resource.<a href="#ftn.d5e110" class="footnote" name="d5e110"><sup class="footnote">[2]</sup></a></p><p>The <code class="code">identity-provider-ref</code> attribute refers to an identity provider that can
         be used to authenticate for the service. This attribute is an <code class="code">IDREF</code> that refers
         to an identity provider in the <code class="code">authentication</code> element, which is discussed
         later. If an identity provider is specified, all resources require authentication by
@@ -343,7 +344,7 @@ identity-provider-ref = attribute identity-provider-ref { xsd:IDREF }
         authentication by default, but an individual resource can specify an identity
         provider.</p><p>The <code class="code">start</code> element identifies the home resource, which is the published
         entry point for the service. Because every RESTful service should have a single published
-        entry point, the <code class="code">start</code> element is required. </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e119"></a>Media Types</h3></div></div></div><p>In RSDL, media types describe the resource representations used in a REST service. In
+        entry point, the <code class="code">start</code> element is required. </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e120"></a>Media Types</h3></div></div></div><p>In RSDL, media types describe the resource representations used in a REST service. In
         the systems we design, it is quite common for a service to use multiple media types; for
         instance, the example we are discussing is focused on documents, but it also uses XML Home
         Documents to provide a set of available links in the home resource, uses Atom and AtomPub
@@ -374,7 +375,7 @@ href = attribute href { xsd:anyURI }
           (<code class="code">xsd</code>), a JSON Schema (<code class="code">JSONSchema</code>), a human readable description
         (in <code class="code">text</code> or <code class="code">html</code>), or Sedola (<code class="code">sedola</code>), an XML format
         that provides a structured description of a media type with cross-references into the
-        document that defines it.<a href="#ftn.d5e138" class="footnote" name="d5e138"><sup class="footnote">[3]</sup></a>
+        document that defines it.<a href="#ftn.d5e139" class="footnote" name="d5e139"><sup class="footnote">[3]</sup></a>
       </p><p>Here are the media types for our example:</p><pre class="programlisting">
   &lt;media-types&gt;
     &lt;media-type id="med-document" name="application/vnd.example.document+xml"&gt;
@@ -398,7 +399,7 @@ href = attribute href { xsd:anyURI }
         schema, the <code class="code">media-type</code> for <code class="code">application/home+xml</code> provides inline
         documentation and a reference to an HTML page, and the <code class="code">media-type</code>s for
           <code class="code">application/atom+xml</code> and <code class="code">text/html</code> provide only brief inline
-        documentation. </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e151"></a>Resources</h3></div></div></div><p>Resources are at the heart of RSDL, which provides rich support for them. Here is a
+        documentation. </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e152"></a>Resources</h3></div></div></div><p>Resources are at the heart of RSDL, which provides rich support for them. Here is a
         schema fragment for resources:</p><pre class="programlisting">
 resources = element resources { id?, documentation?, resource* }
 resource =
@@ -666,7 +667,7 @@ http-method = "GET" | "PUT" | "HEAD" | "POST" | "DELETE" | "TRACE" | "OPTIONS" |
         &lt;documentation&gt;A date, representing the expiration date of the document.&lt;/documentation&gt;
     &lt;/property&gt;   
 &lt;/properties&gt;        
-      </pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e214"></a>Link Relations</h3></div></div></div><p>Link relations are declared globally. We recommend that even IANA standard link
+      </pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e215"></a>Link Relations</h3></div></div></div><p>Link relations are declared globally. We recommend that even IANA standard link
         relations be documented for a service, because there are many standard link relations, and
         their meaning is not completely specified, their meaning needs to be specified concretely
         for a given service. Link relations are declared globally and referred to from individual
@@ -690,12 +691,12 @@ http-method = "GET" | "PUT" | "HEAD" | "POST" | "DELETE" | "TRACE" | "OPTIONS" |
     &lt;link-relation id="rel-documents" name="identifiers.example.com/linkrel/documents"/&gt;
 
   &lt;/link-relations&gt;        
-      </pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e219"></a>Headers</h3></div></div></div><p>Headers are declared globally. We recommend that even standard HTTP headers be
+      </pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e220"></a>Headers</h3></div></div></div><p>Headers are declared globally. We recommend that even standard HTTP headers be
         documented for a service, so that clients know what is required.</p><pre class="programlisting">
   &lt;headers&gt;
     &lt;header id="hea-authenticate" name="WWW-Authenticate" type="request"/&gt;
   &lt;/headers&gt;        
-      </pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e223"></a>Authentication</h3></div></div></div><p>Authentication mechanisms and identity providers are declared globally. Here is the
+      </pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e224"></a>Authentication</h3></div></div></div><p>Authentication mechanisms and identity providers are declared globally. Here is the
         schema fragment for authentication:</p><pre class="programlisting">
 authentication = element authentication { mechanism*,  identity-provider* }
 mechanism = element mechanism { id?, name, authentication-type, documentation?, scheme* }
@@ -720,7 +721,7 @@ scheme-parameter = element parameter { id?, name, documentation? }
       &lt;identity-provider id="idp" mechanism-ref="aut-http"/&gt;       
     &lt;/mechanism&gt;
   &lt;/authentication&gt;        
-      </pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e229"></a>Status Codes</h3></div></div></div><p>Status codes are declared globally. In order to avoid tight coupling, we do not provide
+      </pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e230"></a>Status Codes</h3></div></div></div><p>Status codes are declared globally. In order to avoid tight coupling, we do not provide
         a direct mechanism for documenting status codes for an individual request (the documentation
         for a request can refer to globally declared status codes as necessary). We recommend that a
         service document any uncommon status codes or uncommon uses of status codes at the service
@@ -802,7 +803,7 @@ HTTP-status-enum =
     | "511"
     | "598"
     | "599"        
-      </pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e235"></a>URI Parameters</h3></div></div></div><p>URI parameters are declared globally, and can be referenced from <code class="code">request</code>s
+      </pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e236"></a>URI Parameters</h3></div></div></div><p>URI parameters are declared globally, and can be referenced from <code class="code">request</code>s
         in <code class="code">method</code>s.</p><pre class="programlisting">
   &lt;uri-parameters&gt;
     &lt;uri-parameter id="par-sortby" name="sortby" datatype="string"&gt;
@@ -811,7 +812,7 @@ HTTP-status-enum =
       &lt;/documentation&gt;
     &lt;/uri-parameter&gt;
   &lt;/uri-parameters&gt;         
-      </pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e241"></a>Documentation Modules</h3></div></div></div><p>The content allowed within a <code class="code">documentation</code> element is defined by a separate
+      </pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="d5e242"></a>Documentation Modules</h3></div></div></div><p>The content allowed within a <code class="code">documentation</code> element is defined by a separate
         module that is imported.</p><pre class="programlisting">
 include "documentation.rnc"        
       </pre><p>We have defined modules <a class="link" href="#appx-html-subset" title="B.&nbsp;HTML module for RSDL Documentation">for HTML</a> and <a class="link" href="#appx-docbook-subset" title="C.&nbsp;DocBook module for RSDL Documentation">for DocBook</a>. A <code class="code">documentation</code> element can
@@ -870,7 +871,7 @@ ref = element ref {
       &lt;identity-provider id="idp" mechanism-ref="aut-http"/&gt;      
     &lt;/mechanism&gt;
   &lt;/authentication&gt;        
-        </pre></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e261"></a>Initial Experience</h2></div></div></div><p>RSDL is quite new. We have recently started using it for some REST projects in the
+        </pre></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e262"></a>Initial Experience</h2></div></div></div><p>RSDL is quite new. We have recently started using it for some REST projects in the
       Information Intelligence Group at EMC Corporation. In this section, we would like to share our
       experiences so far.</p><p>We have found RSDL a valuable teaching tool in the hands of a teacher who is comfortable
       editing XML. On two projects, one of the authors was involved with an early design that was
@@ -905,7 +906,7 @@ ref = element ref {
       changed, we can test to see if the RSDL was also updated appropriately. If not, the build
       fails. Because both the build process and the documentation are synchronized with the
       specification, we can guarantee that the specification, the code, and the documentation are
-      kept in sync.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e269"></a>Future Work</h2></div></div></div><p>This section describes some tools that have not yet been written, or in very early stages,
+      kept in sync.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e270"></a>Future Work</h2></div></div></div><p>This section describes some tools that have not yet been written, or in very early stages,
       that we are considering implementing.</p><p>RSDL Lint is an XSLT transform that checks a RSDL description for internal consistency. In
       its current form, it ensures that an <code class="code">IDREF</code> refers to an element of the
       appropriate type, ensures that identifiers follow our in-house standards, screens for media
@@ -918,7 +919,7 @@ ref = element ref {
       responses of the message flow. As the specification evolves, or the data in the server
       changes, the message flow can be run again to create up-to-date documentation. </p><p>We plan to experiment with domain-specific editors and browsers for RSDL, including the
       ability to select templates that implement standard RESTful design patterns so that they can
-      be modified.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e276"></a>Conclusions</h2></div></div></div><p>RSDL provides a formal notation that can be used to think more clearly about the model for
+      be modified.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d5e277"></a>Conclusions</h2></div></div></div><p>RSDL provides a formal notation that can be used to think more clearly about the model for
       a RESTful service. It is an XML vocabulary designed for loosely-coupled, hypermedia-driven
       RESTful design, and supports the rich structure and cross references of a REST service. We
       find it useful as a teaching tool, a design tool, and a way to represent known design patterns
@@ -2197,7 +2198,7 @@ docbook-attribute = attribute * { text? }
     &lt;/uri-parameter&gt;
   &lt;/uri-parameters&gt;  
 &lt;/service&gt;      
-    </pre></div><div class="bibliography"><div class="titlepage"><div><div><h2 class="title"><a name="d5e300"></a>Bibliography</h2></div></div></div><div class="bibliomixed"><a name="WADL"></a><p class="bibliomixed">[WADL] Marc Hadley, Sun Microsystems. <span class="ital">Web Application Description Language</span>, W3C Member Submission 31 August 2009.
+    </pre></div><div class="bibliography"><div class="titlepage"><div><div><h2 class="title"><a name="d5e301"></a>Bibliography</h2></div></div></div><div class="bibliomixed"><a name="WADL"></a><p class="bibliomixed">[WADL] Marc Hadley, Sun Microsystems. <span class="ital">Web Application Description Language</span>, W3C Member Submission 31 August 2009.
         http://www.w3.org/Submission/wadl/.</p></div><div class="bibliomixed"><a name="rfc6570"></a><p class="bibliomixed">[URI Templates] Joe Gregorio, Google; Roy Fielding,
       Adobe; Marc Hadley, MITRE; Mark Nottingham, Rackspace; David Orchard, Salesforce.com.
         <span class="ital">URI Template</span>, IETF RFC 6570, March 2012.
@@ -2243,14 +2244,14 @@ docbook-attribute = attribute * { text? }
     </p></div><div class="bibliomixed"><a name="Fielding2000"></a><p class="bibliomixed">[Architectural Styles and the Design of Network-based Software Architectures, PhD Dissertation Thesis.]  Roy Thomas Fielding, <span class="ital">Architectural Styles and the Design of
         Network-based Software Architectures, PhD Dissertation Thesis</span>, University of
       California, Irvine &copy; 2000.
-        http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm.</p></div></div><div class="footnotes"><br><hr style="width:100; text-align:left;margin-left: 0"><div id="ftn.d5e78" class="footnote"><p><a href="#d5e78" class="para"><sup class="para">[1] </sup></a>It cannot, of course, force a design to be RESTful, and we are confident that RSDL
+        http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm.</p></div></div><div class="footnotes"><br><hr style="width:100; text-align:left;margin-left: 0"><div id="ftn.d5e79" class="footnote"><p><a href="#d5e79" class="para"><sup class="para">[1] </sup></a>It cannot, of course, force a design to be RESTful, and we are confident that RSDL
           will also be used to create poor designs, but RSDL enforces some important constraints,
           makes it easier to get some important aspects of RESTful design right, and makes it easier
           to create RESTful designs collaboratively and verify them using software. A good notation
-          can facilitate good design, but it does not magically produce good design. </p></div><div id="ftn.d5e109" class="footnote"><p><a href="#d5e109" class="para"><sup class="para">[2] </sup></a>Some REST designers object to naming services or resources because the names are not
+          can facilitate good design, but it does not magically produce good design. </p></div><div id="ftn.d5e110" class="footnote"><p><a href="#d5e110" class="para"><sup class="para">[2] </sup></a>Some REST designers object to naming services or resources because the names are not
             part of the interface. We believe that names are important because human beings need a
             convenient way to refer to things that they are discussing, and they can be helpful
-            metadata in some systems that use RSDL descriptions.</p></div><div id="ftn.d5e138" class="footnote"><p><a href="#d5e138" class="para"><sup class="para">[3] </sup></a>We use <a class="xref" href="#sedola">Sedola</a> to describe standard media types such as Atom and
+            metadata in some systems that use RSDL descriptions.</p></div><div id="ftn.d5e139" class="footnote"><p><a href="#d5e139" class="para"><sup class="para">[3] </sup></a>We use <a class="xref" href="#sedola">Sedola</a> to describe standard media types such as Atom and
             HTML in the same structured way. If we were writing these media types ourselves, we
             would use RSDL to specify the service, and generate Sedola from the RSDL
             description.</p></div></div></div></body></html>
