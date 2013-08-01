@@ -1,0 +1,252 @@
+##   RESTful Service Description Language (RSDL)
+##   Copyright 2012, EMC Corporation
+##
+##   Licensed under the Apache License, Version 2.0 (the "License");
+##   you may not use this file except in compliance with the License.
+##   You may obtain a copy of the License at
+##
+##       http://www.apache.org/licenses/LICENSE-2.0
+##
+##   Unless required by applicable law or agreed to in writing, software
+##   distributed under the License is distributed on an "AS IS" BASIS,
+##   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+##   See the License for the specific language governing permissions and
+##   limitations under the License.
+
+default namespace rsdl = "http://identifiers.emc.com/rsdl"
+
+include "documentation.rnc"
+start = service
+service =
+    element service {
+        id?,
+        name,
+        identity-provider-ref?,
+        documentation?,
+        service-start,
+        media-types,
+        resources,
+        link-relations?,
+        headers?,
+        authentication?,
+        status-codes?,
+        uri-parameters?
+    }
+id = attribute id { xsd:ID }
+idref = attribute ref { xsd:IDREF }
+service-start = element start { idref }
+identity-provider-ref = attribute identity-provider-ref { xsd:IDREF }
+media-types = element media-types { documentation?, media-type* }
+media-type = element media-type { id?, name, documentation?, description* }
+media-type-ref = attribute media-type-ref { xsd:IDREF }
+description = element description { type, href, documentation? }
+type = attribute type { "rnc" | "rng" | "xsd" | "JSONSchema" | "sedola" | "text" | "html" }
+href = attribute href { xsd:anyURI }
+resources = element resources { id?, documentation?, resource* }
+resource =
+    element resource {
+        documentation?,
+        id,
+        name,
+        identity-provider-ref?,
+        public?,
+        status?,
+        extends?,
+        location?,
+        properties?,
+        links?,
+        methods
+    }
+name = attribute name { text }
+public = attribute public { "true" }
+status = implementation-status?, design-status?
+implementation-status =
+    attribute implementation-status {
+        "future" | "assigned" | "poc" | "partial" | "complete" | "passed"
+    }
+design-status =
+    attribute design-status { "future" | "assigned" | "poc" | "partial" | "complete" | "approved" }
+# A resource can extend an existing resource definition, inheriting what it already defines.
+extends = attribute extends { xsd:IDREF }
+location =
+    element location {
+        documentation?,
+        (uri | (uri-template, var*))
+    }
+uri-template = attribute template { xsd:string }
+# URI refers to a link relation. If absent, it is a local link relation, identified by name.
+# uri-parameter-ref indicates that the value is supplied by the client, using a URI parameter.
+#    If no uri-parameter-ref is present, the value is supplied by the server.
+var = element var { documentation?, id?, name, uri?, uri-parameter-ref? }
+properties = element properties { documentation?, property* }
+property = element property { id?, name, documentation? }
+links = element links { documentation?, link* }
+link = element link { link-relation-ref, resource-ref, status?, documentation? }
+resource-ref = attribute resource-ref { xsd:IDREF }
+link-relation-ref = attribute link-relation-ref { xsd:anyURI }
+methods = element methods { method* }
+method = element method { id?, method-name, status?, request?, response? }
+method-name = attribute name { http-method }
+request = element request { documentation?, request-uri-parameters?, header-refs?, representation* }
+response =
+    element response { documentation?, response-status-codes?, header-refs?, representation* }
+request-uri-parameters = element uri-parameters { request-uri-parameter }
+request-uri-parameter = element uri-parameter { idref }
+response-status-codes =
+    element status-codes {
+        element status-code { ref }*
+    }
+header-refs = element header-refs { documentation?, header-ref* }
+header-ref = element header-ref { ref }
+representation = element representation { documentation?, media-type-ref, entity? }
+entity = attribute entity { text }
+http-method = "GET" | "PUT" | "HEAD" | "POST" | "DELETE" | "TRACE" | "OPTIONS" | "CONNECT" | "PATCH"
+link-relations = element link-relations { documentation?, link-relation* }
+link-relation = element link-relation { documentation?, id, status, link-relation-name, href? }
+link-relation-name = attribute name { xsd:anyURI }
+headers = element headers { header* }
+header = element header { id?, name, header-type, documentation? }
+header-type = attribute type { "request" | "response" | "general" | "entity" }
+authentication = element authentication { mechanism*, identity-provider? }
+mechanism = element mechanism { id?, name, authentication-type, documentation?, scheme* }
+mechanism-ref = attribute mechanism-ref { xsd:IDREF }
+identity-provider = element identity-provider { id, mechanism-ref }
+authentication-type = attribute authentication-type { text }
+scheme = element scheme { id?, name, documentation?, scheme-parameter* }
+scheme-parameter = element parameter { id?, name, documentation? }
+status-codes = element status-codes { documentation?, status-code* }
+status-code = element status { code, id, documentation?, http-problem? }
+status-code-ref = attribute ref { xsd:IDREF }
+code = attribute code { HTTP-status-enum }
+HTTP-status-enum =
+    "100"
+    | "101"
+    | "102"
+    | "200"
+    | "201"
+    | "203"
+    | "204"
+    | "205"
+    | "206"
+    | "207"
+    | "208"
+    | "301"
+    | "302"
+    | "303"
+    | "304"
+    | "305"
+    | "306"
+    | "307"
+    | "308"
+    | "400"
+    | "401"
+    | "402"
+    | "403"
+    | "404"
+    | "405"
+    | "406"
+    | "407"
+    | "408"
+    | "409"
+    | "410"
+    | "411"
+    | "412"
+    | "413"
+    | "414"
+    | "415"
+    | "416"
+    | "417"
+    | "418"
+    | "420"
+    | "422"
+    | "423"
+    | "424"
+    | "425"
+    | "426"
+    | "428"
+    | "429"
+    | "431"
+    | "444"
+    | "449"
+    | "450"
+    | "451"
+    | "494"
+    | "495"
+    | "496"
+    | "497"
+    | "499"
+    | "500"
+    | "501"
+    | "502"
+    | "503"
+    | "504"
+    | "505"
+    | "506"
+    | "507"
+    | "508"
+    | "509"
+    | "510"
+    | "511"
+    | "598"
+    | "599"
+http-problem = element problem { problemType, title, detail, supportId, more }
+problemType = element problemType { xsd:anyURI }
+title = element title { text }
+detail = element detail { text }
+supportId = element supportId { xsd:anyURI }
+more = element more { foreign-element* }
+foreign-element = element * - rsdl:* { any-attribute*, (foreign-element* | text)* }
+any-attribute = attribute * { text? }
+uri-parameters = element uri-parameters { documentation?, uri-parameter* }
+uri-parameter =
+    element uri-parameter { id?, name, documentation, datatype, value-range?, default-value? }
+uri-parameter-ref = attribute uri-parameter-ref { xsd:IDREF }
+datatype =
+    attribute datatype {
+        "string"
+        | "boolean"
+        | "decimal"
+        | "float"
+        | "double"
+        | "duration"
+        | "dateTime"
+        | "time"
+        | "date"
+        | "hexBinary"
+        | "base64Binary"
+        | "anyURI"
+        | "integer"
+        | "language"
+        | "ID"
+        | "IDREF"
+        | "integer"
+        | "long"
+        | "short"
+        | "byte"
+    }
+value-range = element value-range { text }
+default-value = element default { text }
+uri = attribute uri { xsd:anyURI }
+# ref elements are used in the documentation modules
+ref =
+    element ref {
+        ((attribute idref { xsd:IDREF }
+          | attribute uri { xsd:anyURI }
+          | attribute media-type { xsd:IDREF }
+          | attribute header { xsd:IDREF }
+          | attribute mechanism { xsd:IDREF }
+          | attribute identity-provider { xsd:IDREF }
+          | attribute scheme { xsd:IDREF }
+          | attribute scheme-parameter { xsd:IDREF }
+          | attribute status-code { xsd:IDREF }
+          | attribute uri-parameter { xsd:IDREF }
+          | attribute resources { xsd:IDREF }
+          | attribute resource { xsd:IDREF }
+          | attribute var { xsd:IDREF }
+          | attribute property { xsd:IDREF }
+          | attribute header { xsd:IDREF }
+          | attribute method { xsd:IDREF }),
+         text?)
+        # Uses the name of the referred item if not provided
+        
+    }
