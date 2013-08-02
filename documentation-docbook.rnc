@@ -1,0 +1,12 @@
+namespace docbook = "http://docbook.org/ns/docbook"
+
+documentation = element documentation { inline?, doc-title?, docbook }
+
+inline = attribute inline { ( "true" | "false" ) }
+doc-title = element title { text }
+
+docbook =  docbook-content*
+docbook-content = (docbook-element | text | ref)
+docbook-element = element docbook:* { docbook-attribute*, docbook-content* }
+docbook-attribute = attribute * { text? }
+
