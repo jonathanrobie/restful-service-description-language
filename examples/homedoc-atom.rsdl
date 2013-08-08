@@ -7,7 +7,7 @@
   <documentation> This REST service provides a simple ATOM feed that allows documents to be read,
     created, modified, or deleted. </documentation>
 
-  <start home-resource-ref="res-home"/>
+  <start ref="res-home"/>
 
   <media-types>
     <media-type id="med-document" name="application/vnd.example.document+xml">
@@ -158,8 +158,8 @@
       <scheme name="basic">
         <parameter name="realm"/>
       </scheme>
-      <identity-provider id="idp" mechanism-ref="aut-http"/>      
     </mechanism>
+    <identity-provider id="idp" mechanism-ref="aut-http"/>      
   </authentication>
 
   <status-codes>
